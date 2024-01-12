@@ -1,3 +1,45 @@
-.blue {
-    color:blue;
+html, body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header {
+    width: 100%;
+    font-size: 1.5rem;
+}
+
+.menu {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 8px; 
+}
+
+.option {
+    padding: 5px 10px;
+    margin-bottom: 8px;
+    border: 1px solid black;
+}
+
+.gridbox {
+    width: 600px;
+    height: 600px;
+    border: 1px solid black;
+}
+
+.footer {
+    margin-top: 15px;
 }
