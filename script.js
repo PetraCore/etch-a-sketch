@@ -63,5 +63,26 @@ function setupSlider() {
     });
 }
 
+function setupOptions() {
+    // const colorPicker = document.querySelector('colorPicker');
+    // const rainbowBtn = document.querySelector('rainbow option');
+    // const shadowBtn = document.querySelector('shadow option');
+    const reloadBtn = document.querySelector('#reload');
+
+    reloadBtn.addEventListener('click', () => {
+        reloadPixels();
+    });
+
+    // colorPicker.addEventListener('click', () => {
+    // });
+
+    // rainbowBtn.addEventListener('click', () => {
+    // });
+
+    // shadowBtn.addEventListener('click', () => {
+    // });
+}
+
 loadPixels();
 setupSlider();
+setupOptions();
