@@ -1,5 +1,5 @@
 function verifyResolution(resolution) {
-    if (typeof(resolution) !== 'number') {
+    if (typeof(Number(resolution)) !== 'number') {
         return 16;
     }
 
@@ -37,7 +37,30 @@ function loadPixels(resolution = 16) {
 
         gridbox.appendChild(pixel);
     }
+}
 
+function reloadPixels(resolution = 16) {
+    const gridbox = document.querySelector('.gridbox');
+    while (gridbox.firstChild) {
+        gridbox.removeChild(gridbox.firstChild);
+    }
+    loadPixels(resolution);
+}
+
+function setupSlider() {
+    const slider = document.querySelector('#dimensionSlider');
+    const info = document.querySelector('#dimensionInfo');
+
+    slider.addEventListener('input', () => {
+        const value = slider.value;
+        info.textContent = `${value} x ${value}`; 
+    });
+
+    slider.addEventListener('mouseup', () => {
+        const value = slider.value;
+        reloadPixels(value);
+    });
 }
 
 loadPixels();
+setupSlider();
