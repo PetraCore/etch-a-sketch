@@ -14,6 +14,10 @@ function verifyResolution(resolution) {
     return resolution;
 }
 
+function colorize(event) {
+    this.style.backgroundColor = 'mediumvioletred';
+}
+
 function loadPixels(resolution = 16) {
     resolution = verifyResolution(resolution);
     const gridbox = document.querySelector('.gridbox');
@@ -29,9 +33,11 @@ function loadPixels(resolution = 16) {
         pixel.style.height = `${pxHeight}px`;
         pixel.style.backgroundColor = 'lightblue';
 
+        pixel.addEventListener('mouseover', colorize);
+
         gridbox.appendChild(pixel);
     }
 
 }
 
-loadPixels(-10);
+loadPixels();
