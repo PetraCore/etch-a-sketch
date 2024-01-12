@@ -1,9 +1,10 @@
 function verifyResolution(resolution) {
-    if (typeof(Number(resolution)) !== 'number') {
+    let resNum = Number(resolution);
+    if (isNaN(resNum)) {
         return 16;
     }
 
-    resolution = Math.abs(resolution);
+    resNum = Math.abs(resolution);
     if (resolution > 100) {
         return 100;
     }
@@ -11,7 +12,7 @@ function verifyResolution(resolution) {
         return 1;
     }
 
-    return resolution;
+    return resNum;
 }
 
 function colorize(event) {
