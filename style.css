@@ -7,6 +7,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: rgb(252, 241, 229);
 }
 
 .container {
@@ -29,9 +30,58 @@ body {
 }
 
 .option {
-    padding: 5px 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    padding: 0;
     margin-bottom: 8px;
+    border-radius: 50%;
     border: 1px solid black;
+    background-color: #fff;
+}
+
+.option:hover {
+    cursor: pointer;
+    border-color: rgb(61, 90, 234);
+    color: rgb(61, 90, 234);
+}
+
+.option.shadow:hover {
+    box-shadow: 5px 3px 5px;
+}
+
+@keyframes rainbow {
+    0% {
+        background-color: #6666ff;
+    }
+    10% {
+        background-color: #0099ff;
+    }
+    50% {
+        background-color: #00ff00;
+    }
+    75% {
+        background-color: #ff3399;
+    }
+    100% {
+        background-color: #6666ff;
+    }
+}
+
+.option.rainbow:hover {
+    animation: rainbow 6s linear 0s infinite;
+}
+
+.right {
+    margin-left: auto;
+}
+
+.info {
+    width: 70px;
+    flex: 0 1 auto;
+    text-align: right;
 }
 
 .menu input {
