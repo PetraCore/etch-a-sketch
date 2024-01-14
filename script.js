@@ -92,7 +92,7 @@ function setupSlider() {
         info.textContent = `${value} x ${value}`; 
     });
 
-    slider.addEventListener('mouseup', () => {
+    slider.addEventListener('click', () => {
         const value = slider.value;
         reloadPixels(value);
     });
