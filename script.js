@@ -15,21 +15,38 @@ function verifyResolution(resolution) {
     return resNum;
 }
 
+let arePixelsInteractive = false;
+
+function activatePixels(event) {
+    arePixelsInteractive = true;
+    drawPixel(event);
+}
+
+function deactivatePixels() {
+    arePixelsInteractive = false;
+}
+
 let mode = 'colorize';
 
-function drawPixel() {
+function drawPixel(event) {
+    if (!arePixelsInteractive) {
+        return;
+    }
+
+    const pixel = event.currentTarget;
+
     switch(mode) {
         case 'colorize':
-            this.style.backgroundColor = 'mediumvioletred';
+            pixel.style.backgroundColor = 'mediumvioletred';
         break;
         case 'rainbow':
             const r = Math.floor(Math.random() * 255);
             const g = Math.floor(Math.random() * 255);
             const b = Math.floor(Math.random() * 255);
-            this.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+            pixel.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
         break;
         case 'darken':
-            this.style.backgroundColor = 'black';
+            pixel.style.backgroundColor = 'black';
         break;
     }
 }
@@ -48,7 +65,10 @@ function loadPixels(resolution = 16) {
         pixel.style.width = `${pxWidth}px`;
         pixel.style.height = `${pxHeight}px`;
         pixel.style.backgroundColor = 'lightblue';
+        pixel.style.userSelect = 'none';
 
+        pixel.addEventListener('mousedown', activatePixels);
+        window.addEventListener('mouseup', deactivatePixels);
         pixel.addEventListener('mouseover', drawPixel);
 
         gridbox.appendChild(pixel);
