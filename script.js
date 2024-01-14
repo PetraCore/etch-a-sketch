@@ -15,8 +15,23 @@ function verifyResolution(resolution) {
     return resNum;
 }
 
-function colorize(event) {
-    this.style.backgroundColor = 'mediumvioletred';
+let mode = 'colorize';
+
+function drawPixel() {
+    switch(mode) {
+        case 'colorize':
+            this.style.backgroundColor = 'mediumvioletred';
+        break;
+        case 'rainbow':
+            const r = Math.floor(Math.random() * 255);
+            const g = Math.floor(Math.random() * 255);
+            const b = Math.floor(Math.random() * 255);
+            this.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+        break;
+        case 'darken':
+            this.style.backgroundColor = 'black';
+        break;
+    }
 }
 
 function loadPixels(resolution = 16) {
@@ -34,7 +49,7 @@ function loadPixels(resolution = 16) {
         pixel.style.height = `${pxHeight}px`;
         pixel.style.backgroundColor = 'lightblue';
 
-        pixel.addEventListener('mouseover', colorize);
+        pixel.addEventListener('mouseover', drawPixel);
 
         gridbox.appendChild(pixel);
     }
@@ -64,23 +79,26 @@ function setupSlider() {
 }
 
 function setupOptions() {
-    // const colorPicker = document.querySelector('colorPicker');
-    // const rainbowBtn = document.querySelector('rainbow option');
-    // const shadowBtn = document.querySelector('shadow option');
+    const colorPicker = document.querySelector('.colorPicker');
+    const rainbowBtn = document.querySelector('.rainbow');
+    const shadowBtn = document.querySelector('.shadow');
     const reloadBtn = document.querySelector('#reload');
 
     reloadBtn.addEventListener('click', () => {
         reloadPixels(document.querySelector('#dimensionSlider').value);
     });
 
-    // colorPicker.addEventListener('click', () => {
-    // });
+    colorPicker.addEventListener('click', () => {
+        mode = 'colorize';
+    });
 
-    // rainbowBtn.addEventListener('click', () => {
-    // });
+    rainbowBtn.addEventListener('click', () => {
+        mode = 'rainbow';
+    });
 
-    // shadowBtn.addEventListener('click', () => {
-    // });
+    shadowBtn.addEventListener('click', () => {
+        mode = 'darken';
+    });
 }
 
 loadPixels();
