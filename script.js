@@ -81,7 +81,7 @@ function setupSlider() {
 function setupOptions() {
     const colorPicker = document.querySelector('.colorPicker');
     const rainbowBtn = document.querySelector('.rainbow');
-    const shadowBtn = document.querySelector('.shadow');
+    const darkenBtn = document.querySelector('.darken');
     const reloadBtn = document.querySelector('#reload');
 
     reloadBtn.addEventListener('click', () => {
@@ -96,7 +96,7 @@ function setupOptions() {
         mode = 'rainbow';
     });
 
-    shadowBtn.addEventListener('click', () => {
+    darkenBtn.addEventListener('click', () => {
         mode = 'darken';
     });
 }
