@@ -27,7 +27,7 @@ function deactivatePixels() {
 }
 
 let mode = 'colorize';
-let brushColor = 'black';
+let brushColor = '#4CABE6';
 
 function drawPixel(event) {
     if (!arePixelsInteractive) {
