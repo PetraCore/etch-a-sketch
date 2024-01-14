@@ -102,8 +102,8 @@ function setupSlider() {
 function setupOptions() {
     const colorPicker = document.querySelector('#colorPicker');
     const colorBtn = document.querySelector('.colorBtn');
-    const rainbowBtn = document.querySelector('.rainbow');
-    const darkenBtn = document.querySelector('.darken');
+    const rainbowBtn = document.querySelector('.rainbowBtn');
+    const darkenBtn = document.querySelector('.darkenBtn');
     const reloadBtn = document.querySelector('#reload');
 
     reloadBtn.addEventListener('click', () => {

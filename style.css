@@ -48,7 +48,7 @@ body {
     color: rgb(61, 90, 234);
 }
 
-.option.darken:hover {
+.option.darkenBtn:hover {
     box-shadow: 5px 3px 5px;
 }
 
@@ -81,7 +81,7 @@ body {
     }
 }
 
-.option.rainbow:hover {
+.option.rainbowBtn:hover {
     animation: rainbow 6s linear 0s infinite;
 }
 
