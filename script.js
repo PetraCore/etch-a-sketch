@@ -37,18 +37,26 @@ function drawPixel(event) {
     const pixel = event.currentTarget;
 
     switch(mode) {
-        case 'colorize':
+        case 'colorize': {
             pixel.style.backgroundColor = brushColor;
-        break;
-        case 'rainbow':
+            break;
+        }
+        case 'rainbow': {
             const r = Math.floor(Math.random() * 255);
             const g = Math.floor(Math.random() * 255);
             const b = Math.floor(Math.random() * 255);
             pixel.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
-        break;
-        case 'darken':
-            pixel.style.backgroundColor = 'black';
-        break;
+            break;
+        }
+        case 'darken': {
+            let rgbColors = pixel.style.backgroundColor.match(/\d+/g);
+            rgbColors = rgbColors.map(colorValue => {
+                colorValue = Number(colorValue);
+                return colorValue - 15; 
+            });
+            pixel.style.backgroundColor = `rgb(${rgbColors.toString(', ')})`;
+            break;
+        }
     }
 }
 
@@ -65,7 +73,7 @@ function loadPixels(resolution = 16) {
         const pixel = document.createElement('div');
         pixel.style.width = `${pxWidth}px`;
         pixel.style.height = `${pxHeight}px`;
-        pixel.style.backgroundColor = 'white';
+        pixel.style.backgroundColor = '#FFFFFF';
         pixel.style.userSelect = 'none';
 
         pixel.addEventListener('mousedown', activatePixels);
