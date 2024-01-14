@@ -70,7 +70,7 @@ function setupOptions() {
     const reloadBtn = document.querySelector('#reload');
 
     reloadBtn.addEventListener('click', () => {
-        reloadPixels();
+        reloadPixels(document.querySelector('#dimensionSlider').value);
     });
 
     // colorPicker.addEventListener('click', () => {
