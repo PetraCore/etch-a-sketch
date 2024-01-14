@@ -27,6 +27,7 @@ function deactivatePixels() {
 }
 
 let mode = 'colorize';
+let brushColor = 'black';
 
 function drawPixel(event) {
     if (!arePixelsInteractive) {
@@ -37,7 +38,7 @@ function drawPixel(event) {
 
     switch(mode) {
         case 'colorize':
-            pixel.style.backgroundColor = 'mediumvioletred';
+            pixel.style.backgroundColor = brushColor;
         break;
         case 'rainbow':
             const r = Math.floor(Math.random() * 255);
@@ -64,7 +65,7 @@ function loadPixels(resolution = 16) {
         const pixel = document.createElement('div');
         pixel.style.width = `${pxWidth}px`;
         pixel.style.height = `${pxHeight}px`;
-        pixel.style.backgroundColor = 'lightblue';
+        pixel.style.backgroundColor = 'white';
         pixel.style.userSelect = 'none';
 
         pixel.addEventListener('mousedown', activatePixels);
@@ -99,7 +100,8 @@ function setupSlider() {
 }
 
 function setupOptions() {
-    const colorPicker = document.querySelector('.colorPicker');
+    const colorPicker = document.querySelector('#colorPicker');
+    const colorBtn = document.querySelector('.colorBtn');
     const rainbowBtn = document.querySelector('.rainbow');
     const darkenBtn = document.querySelector('.darken');
     const reloadBtn = document.querySelector('#reload');
@@ -111,6 +113,14 @@ function setupOptions() {
     colorPicker.addEventListener('click', () => {
         mode = 'colorize';
     });
+
+    colorPicker.addEventListener('blur', () => {
+        brushColor = colorPicker.value;
+    })
+
+    colorPicker.addEventListener('input', () => {
+        colorBtn.style.backgroundColor = colorPicker.value;
+    })
 
     rainbowBtn.addEventListener('click', () => {
         mode = 'rainbow';

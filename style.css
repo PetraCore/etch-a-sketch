@@ -52,6 +52,17 @@ body {
     box-shadow: 5px 3px 5px;
 }
 
+.colorBtn {
+    background-color: #000;
+}
+
+.colorBtn > input[type='color'] {
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: inherit;
+}
+
 @keyframes rainbow {
     0% {
         background-color: #6666ff;
