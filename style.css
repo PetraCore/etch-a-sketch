@@ -48,8 +48,20 @@ body {
     color: rgb(61, 90, 234);
 }
 
-.option.darkenBtn:hover {
+.option.highlight:hover {
+    cursor: default;
+} 
+
+
+.option.darkenBtn:hover,
+.darkenBtn.highlight {
     box-shadow: 5px 3px 5px;
+    color: #000000;
+    border-color: #000000;
+}
+
+.darkenBtn.highlight {
+    background-color: #3a3939;
 }
 
 .colorBtn {
@@ -63,7 +75,7 @@ body {
     cursor: inherit;
 }
 
-@keyframes rainbow {
+@keyframes rainbowBackground {
     0% {
         background-color: #6666ff;
     }
@@ -81,8 +93,37 @@ body {
     }
 }
 
-.option.rainbowBtn:hover {
-    animation: rainbow 6s linear 0s infinite;
+@keyframes rainbowBorders {
+    0% {
+        border-color: #6666ff;
+    }
+    10% {
+        border-color: #0099ff;
+    }
+    50% {
+        border-color: #00ff00;
+    }
+    75% {
+        border-color: #ff3399;
+    }
+    100% {
+        border-color: #6666ff;
+    }
+}
+
+.rainbowBtn:hover {
+    animation: rainbowBorders 6s linear 0s infinite;
+}
+
+.rainbowBtn.highlight {
+    animation: rainbowBorders 6s linear 0s infinite,
+    rainbowBackground 6s linear 0s infinite;
+}
+
+.option#reload:hover {
+    background-color: #f69e9e;
+    color: #972323;
+    border-color: #972323;
 }
 
 .right {

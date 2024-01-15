@@ -107,6 +107,15 @@ function setupSlider() {
     });
 }
 
+function highlightOption(event) {
+    const options = document.querySelectorAll('.option');
+    options.forEach(option => {
+        option.classList.remove('highlight');
+    });
+    const option = event.target;
+    option.classList.add('highlight');
+}
+
 function setupOptions() {
     const colorPicker = document.querySelector('#colorPicker');
     const colorBtn = document.querySelector('.colorBtn');
@@ -118,7 +127,8 @@ function setupOptions() {
         reloadPixels(document.querySelector('#dimensionSlider').value);
     });
 
-    colorPicker.addEventListener('click', () => {
+    colorBtn.addEventListener('click', (event) => {
+        highlightOption(event);
         mode = 'colorize';
     });
 
@@ -130,11 +140,13 @@ function setupOptions() {
         colorBtn.style.backgroundColor = colorPicker.value;
     })
 
-    rainbowBtn.addEventListener('click', () => {
+    rainbowBtn.addEventListener('click', (event) => {
+        highlightOption(event);
         mode = 'rainbow';
     });
 
-    darkenBtn.addEventListener('click', () => {
+    darkenBtn.addEventListener('click', (event) => {
+        highlightOption(event);
         mode = 'darken';
     });
 }
