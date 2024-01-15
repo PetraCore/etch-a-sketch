@@ -52,7 +52,6 @@ body {
     cursor: default;
 } 
 
-
 .option.darkenBtn:hover,
 .darkenBtn.highlight {
     box-shadow: 5px 3px 5px;
@@ -73,42 +72,6 @@ body {
     height: 100%;
     opacity: 0;
     cursor: inherit;
-}
-
-@keyframes rainbowBackground {
-    0% {
-        background-color: #6666ff;
-    }
-    10% {
-        background-color: #0099ff;
-    }
-    50% {
-        background-color: #00ff00;
-    }
-    75% {
-        background-color: #ff3399;
-    }
-    100% {
-        background-color: #6666ff;
-    }
-}
-
-@keyframes rainbowBorders {
-    0% {
-        border-color: #6666ff;
-    }
-    10% {
-        border-color: #0099ff;
-    }
-    50% {
-        border-color: #00ff00;
-    }
-    75% {
-        border-color: #ff3399;
-    }
-    100% {
-        border-color: #6666ff;
-    }
 }
 
 .rainbowBtn:hover {
@@ -151,4 +114,40 @@ body {
 
 .footer {
     margin-top: 15px;
+}
+
+@keyframes rainbowBackground {
+    0% {
+        background-color: #6666ff;
+    }
+    10% {
+        background-color: #0099ff;
+    }
+    50% {
+        background-color: #00ff00;
+    }
+    75% {
+        background-color: #ff3399;
+    }
+    100% {
+        background-color: #6666ff;
+    }
+}
+
+@keyframes rainbowBorders {
+    0% {
+        border-color: #6666ff;
+    }
+    10% {
+        border-color: #0099ff;
+    }
+    50% {
+        border-color: #00ff00;
+    }
+    75% {
+        border-color: #ff3399;
+    }
+    100% {
+        border-color: #6666ff;
+    }
 }
