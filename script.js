@@ -1,7 +1,12 @@
+const DEFAULT_PIXEL_COLOR = '#FFFFFF';
+const DEFAULT_CANVAS_RESOLUTION = 16;
+const DEFAULT_BRUSH_COLOR = '#4CABE6';
+const DEFAULT_BRUSH_MODE = 'colorize';
+
 function verifyResolution(resolution) {
     let resNum = Number(resolution);
     if (isNaN(resNum)) {
-        return 16;
+        return DEFAULT_CANVAS_RESOLUTION;
     }
 
     resNum = Math.abs(resolution);
@@ -26,8 +31,8 @@ function deactivatePixels() {
     arePixelsInteractive = false;
 }
 
-let mode = 'colorize';
-let brushColor = '#4CABE6';
+let brushMode = DEFAULT_BRUSH_MODE;  
+let brushColor = DEFAULT_BRUSH_COLOR;
 
 function drawPixel(event) {
     if (!arePixelsInteractive) {
@@ -36,7 +41,7 @@ function drawPixel(event) {
 
     const pixel = event.currentTarget;
 
-    switch(mode) {
+    switch(brushMode) {
         case 'colorize': {
             pixel.style.backgroundColor = brushColor;
             break;
@@ -60,7 +65,7 @@ function drawPixel(event) {
     }
 }
 
-function loadPixels(resolution = 16) {
+function loadPixels(resolution = DEFAULT_CANVAS_RESOLUTION) {
     resolution = verifyResolution(resolution);
     const gridbox = document.querySelector('.gridbox');
     const pxWidth = gridbox.clientWidth / resolution;
@@ -73,7 +78,7 @@ function loadPixels(resolution = 16) {
         const pixel = document.createElement('div');
         pixel.style.width = `${pxWidth}px`;
         pixel.style.height = `${pxHeight}px`;
-        pixel.style.backgroundColor = '#FFFFFF';
+        pixel.style.backgroundColor = DEFAULT_PIXEL_COLOR; 
         pixel.style.userSelect = 'none';
 
         pixel.addEventListener('mousedown', activatePixels);
@@ -84,7 +89,7 @@ function loadPixels(resolution = 16) {
     }
 }
 
-function reloadPixels(resolution = 16) {
+function reloadPixels(resolution = DEFAULT_CANVAS_RESOLUTION) {
     const gridbox = document.querySelector('.gridbox');
     while (gridbox.firstChild) {
         gridbox.removeChild(gridbox.firstChild);
@@ -95,6 +100,9 @@ function reloadPixels(resolution = 16) {
 function setupSlider() {
     const slider = document.querySelector('#dimensionSlider');
     const info = document.querySelector('#dimensionInfo');
+
+    slider.value = DEFAULT_CANVAS_RESOLUTION;
+    info.textContent = `${DEFAULT_CANVAS_RESOLUTION} x ${DEFAULT_CANVAS_RESOLUTION}`;
 
     slider.addEventListener('input', () => {
         const value = slider.value;
@@ -123,13 +131,15 @@ function setupOptions() {
     const darkenBtn = document.querySelector('.darkenBtn');
     const reloadBtn = document.querySelector('#reload');
 
+    colorBtn.style.backgroundColor = DEFAULT_BRUSH_COLOR;
+
     reloadBtn.addEventListener('click', () => {
         reloadPixels(document.querySelector('#dimensionSlider').value);
     });
 
     colorBtn.addEventListener('click', (event) => {
         highlightOption(event);
-        mode = 'colorize';
+        brushMode = 'colorize';
     });
 
     colorPicker.addEventListener('blur', () => {
@@ -142,15 +152,19 @@ function setupOptions() {
 
     rainbowBtn.addEventListener('click', (event) => {
         highlightOption(event);
-        mode = 'rainbow';
+        brushMode = 'rainbow';
     });
 
     darkenBtn.addEventListener('click', (event) => {
         highlightOption(event);
-        mode = 'darken';
+        brushMode = 'darken';
     });
 }
 
-loadPixels();
-setupSlider();
-setupOptions();
+function setupWebpage() {
+    loadPixels();
+    setupSlider();
+    setupOptions();
+}
+
+setupWebpage();
